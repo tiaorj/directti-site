@@ -1,21 +1,50 @@
 export type ProductStatus = "Em operação" | "Em evolução" | "Projeto demonstrativo";
+export type Product = {
+  name: string;
+  description: string;
+  technologies: readonly string[];
+  status: ProductStatus;
+  href: string;
+  notes?: readonly string[];
+};
 
 export const site = {
   name: "DIRECT TI",
   legalName: "DIRECT TI",
   description:
     "Consultoria e desenvolvimento de software para modernização de sistemas, integrações, dados e automação empresarial.",
-  domain: "https://directti.dev.br/",
+  domain: "https://directti.dev.br",
   email: "direct.ti.tec@gmail.com", // Substitua pelo e-mail corporativo.
   phone: "+55 (41) 99911-3960", // Substitua pelo telefone corporativo.
   whatsapp: "5541999113960", // Apenas números, com DDI e DDD.
   linkedin: "https://www.linkedin.com/in/sebastiao-oliveira-tech/", // Substitua pela URL institucional.
   github: "https://github.com/tiaorj/", // Substitua pela URL institucional.
   products: [
-    { name: "DirectOS", description: "Plataforma SaaS para gestão de ordens de serviço, clientes, serviços, recebimentos, indicadores e comunicação operacional.", technologies: ["Next.js", "TypeScript", "SQL Server"], status: "Em evolução" as ProductStatus, href: "#" },
-    { name: "Controle Financeiro", description: "Aplicação web para organização de receitas, despesas, categorias, carteiras e períodos financeiros.", technologies: ["React", "TypeScript", "PostgreSQL"], status: "Em operação" as ProductStatus, href: "#" },
-    { name: "Meu Álbum 26", description: "Aplicação web/PWA para controle de coleções, itens repetidos e faltantes, com autenticação, busca, filtros e compartilhamento.", technologies: ["Next.js", "PWA", "TypeScript"], status: "Projeto demonstrativo" as ProductStatus, href: "#" },
-  ],
+    {
+      name: "DirectOS",
+      description: "Plataforma SaaS multiempresa para gestão de ordens de serviço, clientes, serviços, recebimentos, indicadores e comunicação operacional.",
+      technologies: ["PHP", "SQL Server", "PDO SQLSRV", "Bootstrap", "JavaScript", "jQuery", "HTML", "CSS"],
+      notes: ["Arquitetura multiempresa/SaaS, autenticação e sessões, proteção CSRF.", "Integrações e APIs são apresentadas somente quando efetivamente implementadas."],
+      status: "Em evolução",
+      href: "https://directos.directti.dev.br/",
+    },
+    {
+      name: "Controle Financeiro",
+      description: "Aplicação web para organização de receitas, despesas, categorias, carteiras e períodos financeiros.",
+      technologies: ["Python", "Flask", "SQL Server", "HTML", "CSS", "JavaScript", "Bootstrap"],
+      notes: ["Inclui autenticação.", "Docker não é divulgado como tecnologia do projeto enquanto o uso em produção não estiver confirmado."],
+      status: "Em operação",
+      href: "https://directti.dev.br/login?next=/app/financeiro",
+    },
+    {
+      name: "Meu Álbum 26",
+      description: "Aplicação web para controle de coleções, itens repetidos e faltantes, com autenticação, busca, filtros e compartilhamento.",
+      technologies: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS", "Vercel"],
+      notes: ["PWA deve ser divulgado apenas quando os recursos correspondentes estiverem implementados."],
+      status: "Projeto demonstrativo",
+      href: "https://meu-album-26.vercel.app/",
+    },
+  ] satisfies readonly Product[],
 } as const;
 
 export const navItems = [

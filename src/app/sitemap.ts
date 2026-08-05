@@ -1,0 +1,2 @@
+import type { MetadataRoute } from "next"; import { site } from "@/config/site";
+export default function sitemap():MetadataRoute.Sitemap{return ["","/servicos","/servicos/modernizacao-de-sistemas","/servicos/desenvolvimento-sob-medida","/servicos/integracoes-e-apis","/servicos/dados-e-bi","/servicos/ia-e-automacao","/legado360","/produtos","/cases","/sobre","/contato","/politica-de-privacidade"].map(path=>({url:`${site.domain}${path}`,lastModified:new Date(),changeFrequency:"monthly",priority:path===""?1:.7}));}

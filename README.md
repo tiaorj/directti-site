@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DIRECT TI Website
 
-## Getting Started
+[![Website](https://img.shields.io/badge/Website-directti.dev.br-2563eb?style=for-the-badge)](https://directti.dev.br)
 
-First, run the development server:
+Site institucional da DIRECT TI desenvolvido com Next.js, TypeScript e Tailwind CSS, apresentando os serviços, produtos e posicionamento da empresa em modernização de sistemas, desenvolvimento sob medida, integrações, dados e Inteligência Artificial.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Visão Geral
+
+Este projeto representa o site institucional da DIRECT TI e centraliza a apresentação da empresa, de seus serviços, produtos, cases e canais de contato.
+
+## Principais funcionalidades
+
+- Site institucional
+- Landing page do Legado360
+- Catálogo de produtos
+- Página de serviços
+- Cases
+- Página Sobre
+- Contato
+- SEO otimizado
+- Sitemap
+- Robots
+- Dados estruturados
+- Layout responsivo
+
+## Tecnologias
+
+### Framework
+
+- Next.js
+- React
+- TypeScript
+
+### Interface
+
+- Tailwind CSS
+
+### SEO
+
+- Metadata API
+- Open Graph
+- Sitemap
+- Robots
+- Structured Data
+
+### Deploy
+
+- Vercel
+
+## Arquitetura
+
+```text
+Browser
+  ↓
+Next.js
+  ↓
+Pages
+  ↓
+Components
+  ↓
+Config
+  ↓
+Assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura de pastas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+.
+├── public/                 # Arquivos estáticos e assets públicos
+├── src/
+│   ├── app/                # Rotas, páginas, layout e recursos de SEO
+│   │   ├── servicos/       # Página e páginas dinâmicas de serviços
+│   │   ├── sitemap.ts      # Sitemap da aplicação
+│   │   └── robots.ts       # Configuração de robots
+│   ├── components/         # Componentes de interface e conteúdo
+│   ├── config/             # Configurações e dados institucionais
+│   └── lib/                # Utilitários, incluindo recursos de SEO
+├── next.config.ts          # Configuração do Next.js
+├── package.json            # Scripts e dependências do projeto
+└── tsconfig.json           # Configuração do TypeScript
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Executando localmente
 
-## Learn More
+```bash
+pnpm install
+pnpm dev
+pnpm lint
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O projeto está publicado na Vercel.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Domínio: [https://directti.dev.br](https://directti.dev.br)
 
-## Deploy on Vercel
+## Roadmap
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Concluído:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [x] Novo site institucional
+- [x] SEO
+- [x] Landing Legado360
+- [x] Produtos
+- [x] Responsividade
+
+Planejado:
+
+- [ ] Blog
+- [ ] Área de demonstrações
+- [ ] Cases completos
+- [ ] Landing pages dos produtos
+- [ ] Analytics
+- [ ] Search Console
+
+## Screenshots
+
+<!-- Insira aqui uma captura da página inicial. -->
+<!-- Insira aqui uma captura da landing page do Legado360. -->
+<!-- Insira aqui uma captura da página de produtos ou serviços. -->
+
+## Sobre a DIRECT TI
+
+A DIRECT TI é especializada na modernização de sistemas legados, desenvolvimento de soluções sob medida, integrações entre sistemas, dados e Inteligência Artificial aplicada ao desenvolvimento de software.
+
+[Conheça a DIRECT TI](https://directti.dev.br)
+
+## Contato
+
+- Site: [directti.dev.br](https://directti.dev.br)
+- LinkedIn: [Sebastião Oliveira](https://www.linkedin.com/in/sebastiao-oliveira-tech/)
+- GitHub: [@tiaorj](https://github.com/tiaorj/)
+
+## Licença
+
+MIT

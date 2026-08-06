@@ -34,7 +34,7 @@ export const site = {
       technologies: ["Python", "Flask", "SQL Server", "HTML", "CSS", "JavaScript", "Bootstrap"],
       notes: ["Inclui autenticação.", "Docker não é divulgado como tecnologia do projeto enquanto o uso em produção não estiver confirmado."],
       status: "Em operação",
-      href: "https://directti.dev.br/login?next=/app/financeiro",
+      href: "https://financeiro.directti.dev.br/",
     },
     {
       name: "Meu Álbum 26",

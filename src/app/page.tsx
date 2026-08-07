@@ -8,13 +8,8 @@ const offerings = [
   ["◌", "Produtos SaaS", "Desenvolvemos soluções completas para gestão, dados e processos empresariais.", "/produtos"],
   ["⌘", "Integrações & APIs", "Conectamos sistemas, dados e pessoas para que sua operação funcione de forma inteligente.", "/servicos/integracoes-e-apis"],
 ] as const;
-const products = [
-  ["DirectOS", "Gestão de ordens de serviço, clientes e indicadores operacionais.", "PHP · SQL Server", "#1478ff"],
-  ["Legado360", "Auditoria, documentação e modernização de sistemas legados.", ".NET · C# · SQL Server", "#2dd4bf"],
-  ["Controle Financeiro", "Gestão financeira pessoal e empresarial, simples e inteligente.", "Python · Flask · PostgreSQL", "#8b5cf6"],
-  ["Meu Álbum", "Plataforma para organização e controle de coleções.", "Next.js · TypeScript · Supabase", "#f59e0b"],
-] as const;
-const productLinks: Record<string, string> = { DirectOS: site.products[0].href, "Controle Financeiro": site.products[1].href, Legado360: "/legado360", "Meu Álbum": site.products[2].href };
+const products = site.products.map((product, index) => [product.name, product.description, product.technologies.slice(0, 3).join(" · "), ["#1478ff", "#8b5cf6", "#f59e0b"][index]] as const);
+const productLinks: Record<string, string> = Object.fromEntries(site.products.map((product) => [product.name, product.href]));
 const services = ["Backend", "Frontend", "Power BI", "Integrações", "Arquitetura", "Cloud", "Banco de Dados", "Inteligência Artificial"];
 const technologies = [".NET", "PHP", "Python", "React", "Next.js", "TypeScript", "Node.js", "NestJS", "Prisma", "SQL Server", "PostgreSQL", "Oracle", "Docker", "Redis", "GitHub", "Azure", "AWS", "Power BI"];
 const cases = ["Sistema Jurídico Corporativo", "Modernização ASP Classic", "Dashboards Executivos", "Integrações REST", "Plataformas SaaS"];

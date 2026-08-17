@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
-
+import {
+  AnalyticsConsentManager,
+} from "@/components/analytics-consent";
 import "./globals.css";
 
 import { Footer, Header } from "@/components/site-chrome";
@@ -69,9 +70,14 @@ export default function RootLayout({
         <main>{children}</main>
 
         <Footer />
+        
+        <AnalyticsConsentManager
+            gaId={gaId}
+        />
+                
       </body>
 
-      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
+      
     </html>
   );
 }

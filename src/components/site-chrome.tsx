@@ -9,6 +9,9 @@ import {
   TrackedAnchor,
   TrackedLink,
 } from "@/components/tracked-link";
+import {
+  CookiePreferencesButton,
+} from "@/components/analytics-consent";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -133,6 +136,7 @@ export function Footer() {
         <Link href="/politica-de-privacidade">
             Política de Privacidade
         </Link>
+        <CookiePreferencesButton />
         </div>
 
           <div>

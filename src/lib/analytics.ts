@@ -1,6 +1,9 @@
 "use client";
 
 import { sendGAEvent } from "@next/third-parties/google";
+import {
+  hasAnalyticsConsent,
+} from "@/lib/consent";
 
 export type AnalyticsEventName =
   | "cta_click"
@@ -20,9 +23,12 @@ export function trackEvent(
   eventName: AnalyticsEventName,
   params: AnalyticsParams = {},
 ) {
-  if (!process.env.NEXT_PUBLIC_GA_ID) {
+    if (
+    !process.env.NEXT_PUBLIC_GA_ID ||
+    !hasAnalyticsConsent()
+    ) {
     return;
-  }
+    }
 
   const cleanParams = Object.fromEntries(
     Object.entries(params).filter(

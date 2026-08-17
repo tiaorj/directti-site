@@ -47,23 +47,37 @@ export default function Politica() {
             disponíveis.
           </p>
 
-          <h2>Analytics</h2>
+        <h2>Analytics e preferências</h2>
 
-          <p>
-            O site utiliza ferramentas de
-            análise para compreender
-            navegação e interações com
-            páginas, serviços, produtos e
-            canais de contato.
-          </p>
+        <p>
+        O site pode utilizar Google Analytics
+        para compreender navegação e
+        interações com páginas, serviços,
+        produtos e canais de contato.
+        </p>
 
-          <p>
-            O conteúdo pessoal informado no
-            formulário, como nome, e-mail,
-            empresa e mensagem, não é enviado
-            como parâmetro de evento ao
-            Google Analytics.
-          </p>
+        <p>
+        Os recursos de análise somente são
+        ativados após a autorização do
+        visitante. A preferência escolhida é
+        armazenada localmente no navegador
+        para que o site possa respeitá-la em
+        acessos posteriores.
+        </p>
+
+        <p>
+        A preferência pode ser revista a
+        qualquer momento pela opção
+        &quot;Preferências de cookies&quot;
+        disponível no rodapé do site.
+        </p>
+
+        <p>
+        Nome, e-mail, empresa e conteúdo da
+        mensagem informados no formulário
+        não são enviados como parâmetros de
+        eventos ao Google Analytics.
+        </p>
 
           <h2>WhatsApp e e-mail</h2>
 

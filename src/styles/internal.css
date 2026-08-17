@@ -443,3 +443,117 @@
     transform: none;
   }
 }
+
+/* =========================================================
+   CONTACT FORM - COMMERCIAL LEAD FLOW
+   ========================================================= */
+
+.contact-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: .7;
+}
+
+.contact-form-feedback {
+  border: 1px solid var(--border-default);
+  border-radius: .65rem;
+  padding: .9rem 1rem;
+  font-size: .82rem;
+  line-height: 1.6;
+}
+
+.contact-form-feedback-error {
+  border-color: #f3b8b8;
+  background: #fff5f5;
+  color: #9d2424;
+}
+
+.contact-privacy-note {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: .72rem;
+  line-height: 1.6;
+}
+
+.contact-privacy-note a {
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  border: 1px solid #a7e4d7;
+  border-radius: .85rem;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0, 194, 168, .08),
+      rgba(255, 255, 255, .98)
+    );
+  box-shadow:
+    0 14px 36px
+    rgba(10, 27, 61, .06);
+}
+
+.contact-success-icon {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  margin-bottom: 1.25rem;
+  border-radius: 50%;
+  background: #dcf8f2;
+  color: #087864;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.contact-success h3 {
+  margin: .45rem 0 0;
+  color: var(--text-primary);
+  font-size: 1.65rem;
+  line-height: 1.25;
+}
+
+.contact-success > p:not(.eyebrow) {
+  max-width: 34rem;
+  margin: .9rem 0 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.contact-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .contact-success {
+    padding: 1.4rem;
+  }
+
+  .contact-success-actions {
+    display: grid;
+    width: 100%;
+  }
+
+  .contact-success-actions .btn {
+    width: 100%;
+  }
+}

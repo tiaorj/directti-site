@@ -20,6 +20,7 @@ type LeadSnapshot = {
 
 type LeadApiResponse = {
   ok: boolean;
+  ignored?: boolean;
   error?: string;
 };
 
@@ -111,8 +112,6 @@ export function ContactForm() {
 
             website,
 
-            sourceType: "contact_form",
-
             sourcePath:
               window.location.pathname,
 
@@ -162,6 +161,12 @@ export function ContactForm() {
             "LEAD_SUBMIT_FAILED",
         );
       }
+
+      if (result.ignored) {
+        form.reset();
+
+        return;
+      }      
 
       /*
        * Somente aqui o lead é considerado

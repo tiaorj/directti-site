@@ -25,7 +25,6 @@ type LeadPayload = {
 
   website?: unknown;
 
-  sourceType?: unknown;
   sourcePath?: unknown;
   referrer?: unknown;
 
@@ -136,21 +135,23 @@ export async function POST(request: Request) {
      * Respondemos como sucesso para não ensinar
      * ao bot como contornar a proteção.
      */
-    if (stringValue(payload.website)) {
-    if (process.env.NODE_ENV !== "production") {
-        console.warn(
-        "[leads] Honeypot preenchido. Registro ignorado.",
-        );
-    }
+    if (stringValue(payload.website)) {    
+        if (process.env.NODE_ENV !== "production") {        
+            console.warn(        
+                "[leads] Honeypot preenchido. Registro ignorado.",        
+            );            
+        }   
 
-    return Response.json(
+        return Response.json(
         {
-        ok: true,
+            ok: true,
+            ignored: true,
         },
         {
-        status: 201,
+            status: 201,
         },
-    );
+        
+        );            
     }
 
     const name = stringValue(payload.name);
@@ -251,11 +252,7 @@ export async function POST(request: Request) {
         interest,
         message,
 
-        source_type:
-          nullableString(
-            payload.sourceType,
-            50,
-          ) ?? "contact_form",
+        source_type: "contact_form",
 
         source_path: nullableString(
           payload.sourcePath,

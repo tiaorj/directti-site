@@ -1,5 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  TrackedAnchor,
+  TrackedLink,
+} from "@/components/tracked-link";
 import { ButtonLink, Container, SectionHeading } from "@/components/ui";
 import { site } from "@/config/site";
 
@@ -25,8 +29,54 @@ export default function Home() {
   return <div className="home-page">
     <section className="hero-section"><div className="circuit-bg" /><Container className="hero-grid"><div className="hero-copy"><span className="hero-badge">SOFTWARE ENGINEERING · DATA · AI</span><h1>Projetamos, <span>modernizamos</span> e evoluímos plataformas digitais.</h1><p>Construímos software sob medida, modernizamos sistemas legados e desenvolvemos produtos SaaS que geram resultado real para o seu negócio.</p><div className="hero-actions"><ButtonLink href="/contato">Conheça nossos serviços</ButtonLink><ButtonLink href="/produtos" secondary>Ver produtos</ButtonLink></div><div className="metric-strip">{[["20+", "Anos de experiência"], ["5+", "Produtos desenvolvidos"], ["100%", "Atendimento remoto"], ["Multi-stack", "Tecnologias modernas"]].map(x => <div key={x[0]}><b>{x[0]}</b><span>{x[1]}</span></div>)}</div></div><DashboardMockup /></Container></section>
     <section className="segment-section"><Container><p className="center-kicker">Atendemos <span>diversos segmentos</span></p><div className="segment-grid">{segments.map((x, i) => <div key={x}><span>{["♎", "▣", "◈", "▱", "ⓢ", "ϟ", "♧"][i]}</span>{x}</div>)}</div></Container></section>
-    <section className="dark-section"><Container><SectionHeading eyebrow="O que fazemos" title="Tecnologia que resolve problemas reais." text="Da estratégia à evolução contínua, criamos soluções que conectam pessoas, processos e dados." center /><div className="offering-grid">{offerings.map(x => <Link href={x[3]} className="offering-card" key={x[1]}><span className="offering-icon">{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p><span className="text-link">Saiba mais ↗</span></Link>)}</div></Container></section>
-    <section className="dark-section products-section"><Container><SectionHeading eyebrow="Produtos" title="Produtos digitais em operação." center /><div className="product-grid">{products.map((product) => <a href={product.href} target="_blank" rel="noopener noreferrer" className="product-card product-card-preview" key={product.name}><div className="product-art"><Image src={product.image} alt={`Dashboard do ${product.name}`} fill sizes="(max-width: 600px) calc(100vw - 2.5rem), (max-width: 900px) calc(50vw - 3rem), 25vw" className="object-contain" /></div><h3>{product.name}</h3><p>{product.description}</p><small>{product.technologies.slice(0, 3).join(" · ")}</small><span className="text-link">Acessar produto ↗</span></a>)}</div></Container></section>
+    <section className="dark-section"><Container><SectionHeading eyebrow="O que fazemos" title="Tecnologia que resolve problemas reais." text="Da estratégia à evolução contínua, criamos soluções que conectam pessoas, processos e dados." center />
+    <div className="offering-grid">
+      {offerings.map(x => 
+      <TrackedLink
+        href={x[3]}
+        className="offering-card"
+        key={x[1]}
+        eventName={
+          x[3] === "/produtos"
+            ? "product_click"
+            : "service_click"
+        }
+        eventParams={{
+          ui_location: "home_offerings",
+          item_name: x[1],
+          target_path: x[3],
+        }}
+      >
+      <span className="offering-icon">{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p><span className="text-link">Saiba mais ↗</span>
+      </TrackedLink>)}
+    </div>
+    </Container>
+    </section>
+    <section className="dark-section products-section"><Container><SectionHeading eyebrow="Produtos" title="Produtos digitais em operação." center />
+    <div className="product-grid">
+      {products.map((product) => 
+     <TrackedAnchor
+  href={product.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="product-card product-card-preview"
+    key={product.name}
+    eventName="product_click"
+    eventParams={{
+      ui_location: "home_products",
+      item_name: product.name,
+      item_category: product.category,
+    }}
+    >
+        <div className="product-art">
+          <Image src={product.image} alt={`Dashboard do ${product.name}`} fill sizes="(max-width: 600px) calc(100vw - 2.5rem), (max-width: 900px) calc(50vw - 3rem), 25vw" className="object-contain" />          
+        </div>
+        <h3>
+          {product.name}
+        </h3><p>{product.description}</p><small>{product.technologies.slice(0, 3).join(" · ")}</small>
+        <span className="text-link">Acessar produto ↗</span>
+        </TrackedAnchor>)}
+      </div></Container></section>
     <section className="dark-section services-section"><Container><SectionHeading eyebrow="Serviços" title="Uma equipe para cada camada do seu produto." center /><div className="service-grid">{services.map((x, i) => <div className="service-tile" key={x}><span>{["⌘", "▥", "▥", "⌁", "◇", "☁", "▤", "✦"][i]}</span><h3>{x}</h3><p>Especialistas para construir soluções confiáveis.</p></div>)}</div></Container></section>
     <section className="dark-section process-section"><Container><SectionHeading eyebrow="Processo" title="Como trabalhamos" center /><div className="process-line">{["Diagnóstico", "Arquitetura", "Desenvolvimento", "Entrega", "Evolução"].map((x, i) => <div key={x}><b>{String(i + 1).padStart(2, "0")}</b><h3>{x}</h3><p>{["Entendemos seu desafio.", "Projetamos a melhor solução.", "Construímos com qualidade.", "Implantamos, treinamos e acompanhamos.", "Evoluímos continuamente."][i]}</p></div>)}</div></Container></section>
     <section className="dark-section tech-section"><Container><SectionHeading eyebrow="Tecnologias" title="A base técnica que sustenta nossas entregas." center /><div className="tech-grid">{technologies.map(x => <span key={x}>{x}</span>)}</div></Container></section>

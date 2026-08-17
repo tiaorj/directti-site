@@ -25,11 +25,40 @@ const values = [
 const technologies = [".NET", "C#", "ASP Classic", "PHP", "Python", "React", "Next.js", "TypeScript", "SQL Server", "Oracle", "PostgreSQL", "Power BI", "Docker", "Azure", "REST", "SOAP"];
 
 export default function Sobre() { return <>
-  <PageHero eyebrow="Sobre a DIRECT TI" title="Engenharia de software com responsabilidade sobre a operação" text="A DIRECT TI trabalha com desenvolvimento, modernização e sustentação de sistemas corporativos. Nossa experiência combina código, dados, integrações e entendimento do contexto em que cada aplicação precisa funcionar." />
+  <PageHero eyebrow="Sobre a DIRECT TI"  breadcrumbLabel="Sobre" title="Engenharia de software com responsabilidade sobre a operação" text="A DIRECT TI trabalha com desenvolvimento, modernização e sustentação de sistemas corporativos. Nossa experiência combina código, dados, integrações e entendimento do contexto em que cada aplicação precisa funcionar." />
 
   <section className="py-16 sm:py-24"><Container className="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-start"><div><SectionHeading eyebrow="História" title="Uma trajetória construída em sistemas que precisam funcionar" text="A DIRECT TI reúne experiência em diferentes momentos do ciclo de tecnologia: formação, desenvolvimento de produtos, ambientes críticos, dados e evolução de sistemas legados. Essa trajetória orienta uma prática direta, técnica e conectada ao impacto no negócio." /></div><div className="card border-t-4 border-t-blue-600"><p className="eyebrow">DIRECT TI</p><h2 className="mt-3 text-2xl font-semibold text-slate-900">Tecnologia próxima das decisões</h2><p className="mt-4 leading-7 text-slate-600">Somos uma equipe especializada para empresas que precisam entender, construir ou modernizar software sem perder o controle da operação.</p></div></Container></section>
 
-  <section className="bg-slate-50 py-16 sm:py-24"><Container><SectionHeading center eyebrow="Linha do tempo" title="Experiência acumulada em contextos diferentes" /><div className="mt-12 grid gap-4 md:grid-cols-7">{timeline.map(([year, title, text], index) => <article className="relative border-t-2 border-blue-600 pt-5 md:border-t-0 md:border-l-2 md:pl-5 md:pt-0" key={year}><span className="text-sm font-bold text-blue-700">{year}</span><h3 className="mt-3 font-semibold text-slate-900">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>{index < timeline.length - 1 && <span className="absolute right-0 top-0 hidden text-blue-300 md:block">→</span>}</article>)}</div></Container></section>
+<section className="about-timeline-section">
+  <Container>
+    <SectionHeading
+      center
+      eyebrow="Linha do tempo"
+      title="Experiência acumulada em contextos diferentes"
+      text="Uma trajetória construída em ambientes, tecnologias e desafios distintos — sempre conectada à evolução de sistemas e operações."
+    />
+
+    <div className="about-timeline">
+      {timeline.map(([period, title, text], index) => (
+        <article className="timeline-item" key={`${period}-${title}`}>
+          <div className="timeline-step" aria-hidden="true">
+            {String(index + 1).padStart(2, "0")}
+          </div>
+
+          <div className="timeline-card">
+            <p className="timeline-period">{period}</p>
+
+            <h3>{title}</h3>
+
+            <p className="timeline-description">
+              {text}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>
 
   <section className="py-16 sm:py-24"><Container><SectionHeading eyebrow="Missão" title="Tornar sistemas corporativos mais compreensíveis, confiáveis e evolutivos" text="Nossa missão é transformar conhecimento técnico em continuidade operacional: diagnosticar o que existe, construir o que falta e criar condições para que a equipe evolua o sistema com segurança." /><div className="mt-10 grid gap-5 md:grid-cols-2">{values.map(([title, text]) => <article className="card" key={title}><h3 className="text-xl font-semibold text-slate-900">{title}</h3><p className="mt-3 leading-7 text-slate-600">{text}</p></article>)}</div></Container></section>
 

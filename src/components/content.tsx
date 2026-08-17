@@ -2,6 +2,86 @@ import Link from "next/link";
 import { Container } from "@/components/ui";
 import { site } from "@/config/site";
 
-export function Breadcrumb({ items }: { items: { label: string; href?: string }[] }) { return <nav aria-label="Breadcrumb" className="page-breadcrumb mb-6 text-sm text-slate-500"><ol className="flex flex-wrap gap-2">{items.map((item, index) => <li className="flex items-center gap-2" key={item.label}>{index > 0 && <span aria-hidden="true">/</span>}{item.href ? <Link className="hover:text-blue-700" href={item.href}>{item.label}</Link> : <span className="text-slate-700">{item.label}</span>}</li>)}</ol></nav>; }
-export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) { return <section className="page-hero bg-slate-50 py-10 sm:py-14"><Container className="page-hero-container"><Breadcrumb items={[{ label: "Início", href: "/" }, { label: title }]} /><div className="page-hero-content"><p className="eyebrow">{eyebrow}</p><h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">{title}</h1><p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{text}</p></div></Container></section>; }
-export function StructuredData() { const data = [{ "@context": "https://schema.org", "@type": "Organization", name: site.name, url: site.domain, email: site.email, sameAs: [site.linkedin, site.github] }, { "@context": "https://schema.org", "@type": "ProfessionalService", name: site.name, description: site.description, url: site.domain, areaServed: "BR" }]; return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />; }
+type BreadcrumbItem = {
+  label: string;
+  href?: string;
+};
+
+export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
+  return (
+    <nav aria-label="Breadcrumb" className="page-breadcrumb">
+      <ol>
+        {items.map((item, index) => (
+          <li key={`${item.label}-${index}`}>
+            {index > 0 && <span aria-hidden="true">/</span>}
+
+            {item.href ? (
+              <Link href={item.href}>{item.label}</Link>
+            ) : (
+              <span aria-current="page">{item.label}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+export function PageHero({
+  eyebrow,
+  title,
+  text,
+  breadcrumbLabel,
+}: {
+  eyebrow: string;
+  title: string;
+  text: string;
+  breadcrumbLabel?: string;
+}) {
+  return (
+    <section className="page-hero">
+      <Container className="page-hero-container">
+        <Breadcrumb
+          items={[
+            { label: "Início", href: "/" },
+            { label: breadcrumbLabel ?? eyebrow },
+          ]}
+        />
+
+        <div className="page-hero-content">
+          <p className="eyebrow">{eyebrow}</p>
+          <h1>{title}</h1>
+          <p>{text}</p>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+export function StructuredData() {
+  const data = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: site.name,
+      url: site.domain,
+      email: site.email,
+      sameAs: [site.linkedin, site.github],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: site.name,
+      description: site.description,
+      url: site.domain,
+      areaServed: "BR",
+    },
+  ];
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
